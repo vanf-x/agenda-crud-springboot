@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Contacts</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">User</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/contacts}">Contacts <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contacts/create}">New Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Close Session</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <br>
+    <h1 class="text-center">Agenda</h1>
+    <br>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Mobile number</th>
+            <th scope="col">Email</th>
+            <th scope="col">Birth date</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${contact.active}" th:each="contact:${contacts}">
+            <th scope="row" th:text="${contact.id}"></th>
+            <td th:text="${contact.name}"></td>
+            <td th:text="${contact.lastName}"></td>
+            <td th:text="${contact.mobileNumber}"></td>
+            <td th:text="${contact.email}"></td>
+            <td th:text="${contact.birthDate}"></td>
+            <td>
+                <a th:href="@{/contacts/edit/{id}(id=${contact.id})}" class="btn btn-info">Edit</a>
+                <a th:href="@{/contacts/{id}(id=${contact.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-success" th:href="@{/contacts/create}">Create new contact</a>
+</div>
+</body>
+</html>

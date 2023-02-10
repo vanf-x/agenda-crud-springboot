@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+<style>
+    h1 {
+        font-size: 50px;
+    }
+
+    img {
+        width: 500px;
+    }
+</style>
+<div class="container text-center">
+    <br>
+    <h1 class="text-monospace text-xl">404</h1>
+    <img th:src="@{/img/caveman.gif}" alt="caveman.gif"/>
+    <br>
+    <h2>Look like you're lost</h2>
+    <h6>The page you're looking for is not available</h6>
+    <br>
+    <a class="btn btn-success" th:href="@{/contacts}">Home</a>
+</div>
+</body>
+</html>
